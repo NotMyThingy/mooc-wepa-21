@@ -21,10 +21,10 @@ public class HelloListController {
 
     @GetMapping("/")
     public String home(Model model) {
+        model.addAttribute("list", list);
         return "index";
     }
 
-    // Älä koske tähän metodiin -- tutustumme tiedon lisäämiseen hieman myöhemmin.
     @PostMapping("/")
     public String addContent(@RequestParam String content) {
         this.list.add(content.trim());
