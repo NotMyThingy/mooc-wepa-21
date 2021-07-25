@@ -1,25 +1,28 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <title>Items</title>
-    </head>
 
-    <body>
-        <h1>Items</h1>
+<head>
+    <title>Items</title>
+</head>
 
-        <!-- lisää toiminnallisuus listalla olevien esineiden listaamiseen -->
+<body>
+    <h1>Items</h1>
 
-        
-        <!-- Älä koske alla olevaan lomakkeeseen, tutustumme 
-        tiedon lisäämiseen hieman myöhemmin -->
-        <h2>Add item</h2>
+    <ol>
+        <li th:each="item : ${list}">
+            <span th:text="${item.name}">name</span> (<span th:text="${item.type}">type</span>)
+        </li>
+    </ol>
 
-        <form th:action="@{/}" method="POST">
-            <span>Name:</span>
-            <input type="text" name="name"/>
-            <span>Type:</span>
-            <input type="text" name="type"/>
-            <input type="submit" value="Add!"/>
-        </form>
-    </body>
+    <h2>Add item</h2>
+
+    <form th:action="@{/}" method="POST">
+        <span>Name:</span>
+        <input type="text" name="name" />
+        <span>Type:</span>
+        <input type="text" name="type" />
+        <input type="submit" value="Add!" />
+    </form>
+</body>
+
 </html>
