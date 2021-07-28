@@ -20,7 +20,6 @@ public class HelloIndividualPagesController {
         this.items.put(item.getIdentifier(), item);
     }
 
-
     @PostMapping("/")
     public String post(@RequestParam String name, @RequestParam String type) {
         Item item = new Item(name, type);
@@ -32,5 +31,11 @@ public class HelloIndividualPagesController {
     public String home(Model model) {
         model.addAttribute("items", this.items.values());
         return "index";
+    }
+
+    @GetMapping("/{id}")
+    public String single(Model model, @PathVariable String id) {
+        model.addAttribute("item", this.items.get(id));
+        return "single";
     }
 }
